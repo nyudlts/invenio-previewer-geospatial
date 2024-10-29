@@ -23,7 +23,5 @@
 
 Provides previewers for geospatial file formats
 
-TODO: Please provide feature overview of module
-
 Further documentation is available on
 https://invenio-previewer-geospatial.readthedocs.io/

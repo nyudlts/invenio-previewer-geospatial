@@ -8,11 +8,5 @@
 
 """Provides previewers for geospatial file formats."""
 
-# TODO: This is an example file. Remove it if your package does not use any
-# extra configuration variables.
-
-PREVIEWER_GEOSPATIAL_DEFAULT_VALUE = "foobar"
-"""Default value for the application."""
-
 PREVIEWER_GEOSPATIAL_BASE_TEMPLATE = "invenio_previewer_geospatial/base.html"
 """Default base template for the demo page."""

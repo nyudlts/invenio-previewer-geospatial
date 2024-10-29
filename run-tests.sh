@@ -9,7 +9,7 @@
 
 
 # Usage:
-#   env DB=postgresql12 SEARCH=opensearch2 CACHE=redis MQ=rabbitmq ./run-tests.sh
+#   ./run-tests.sh
 
 # Quit on errors
 set -o errexit

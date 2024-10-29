@@ -19,8 +19,6 @@ from invenio_app.factory import create_app as _create_app
 @pytest.fixture(scope="module")
 def app_config(app_config):
     """Application config override."""
-    # TODO: Override any necessary config values for tests
-    app_config["PREVIEWER_GEOSPATIAL_DEFAULT_VALUE"] = "test-foobar"
     return app_config
 
 
