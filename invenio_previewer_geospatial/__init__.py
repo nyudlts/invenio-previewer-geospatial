@@ -9,7 +9,8 @@
 """Provides previewers for geospatial file formats."""
 
 from .ext import InvenioPreviewerGeospatial
+from .proxies import current_previewer
 
 __version__ = "0.1.0"
 
-__all__ = ("__version__", "InvenioPreviewerGeospatial")
+__all__ = ("__version__", "current_previewer", "InvenioPreviewerGeospatial")

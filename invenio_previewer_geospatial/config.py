@@ -10,3 +10,8 @@
 
 PREVIEWER_GEOSPATIAL_BASE_TEMPLATE = "invenio_previewer_geospatial/base.html"
 """Default base template for the demo page."""
+
+PREVIEWER_PREFERENCE = [
+    "gpx",
+]
+"""Decides which previewers are available and their priority."""
