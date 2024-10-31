@@ -18,7 +18,7 @@ on:
       - "maint-**"
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  "0 3 * * 6"
+    - cron: "0 3 * * 6"
   workflow_dispatch:
     inputs:
       reason:
@@ -31,10 +31,10 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        python-version: ['3.9', '3.12']
+        python-version: [ '3.9', '3.12' ]
 
     env:
-      EXTRAS: tests,${{ matrix.search-service }}
+      EXTRAS: tests
 
     steps:
       - name: Checkout
