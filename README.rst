@@ -10,13 +10,14 @@ Installation
 
 To add this package to your Invenio RDM instance:
 
-Add Package
-~~~~~~~~~~~
+Add Package and Build Assets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
    $ cd your-invenio-rdm
    $ pipenv install git+https://github.com/nyudlts/invenio-previewer-geospatial.git
+   $ invenio-cli assets build
 
 Add Previews to Invenio Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
