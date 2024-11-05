@@ -1,6 +1,6 @@
 """GeoServer Previewer."""
 
-from flask import render_template, current_app
+from flask import current_app, render_template
 from invenio_previewer.proxies import current_previewer
 
 previewable_extensions = ["shp"]
