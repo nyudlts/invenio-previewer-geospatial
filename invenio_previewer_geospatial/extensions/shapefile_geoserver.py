@@ -1,21 +1,21 @@
-"""GeoServer Previewer."""
+"""Shapefile previews via GeoServer."""
 
 from flask import current_app, render_template
 from invenio_previewer.proxies import current_previewer
+from invenio_previewer.utils import dotted_exts
 
 previewable_extensions = ["shp"]
 
 
 def can_preview(file):
     """Check if file can be previewed."""
-    return file.is_local() and file.has_extensions(".shp")
+    return file.is_local() and file.has_extensions(*dotted_exts(previewable_extensions))
 
 
 def preview(file):
     """Render the Geoserver template."""
     return render_template(
         "invenio_previewer_geospatial/geoserver.html",
-        file=file,
         record=file.record,
         wms_url_field=(
             current_app.config.get(
