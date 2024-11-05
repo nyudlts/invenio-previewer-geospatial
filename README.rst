@@ -29,7 +29,8 @@ package:
 ::
 
    PREVIEWER_PREVIEWERS_ORDER = [
-       "invenio_previewer.extensions.geoserver",
+       "invenio_previewer.extensions.shapefile_geoserver",
+       "invenio_previewer.extensions.geotiff_geoserver",
        "invenio_previewer.extensions.gpx",
        "invenio_previewer.extensions.csv_papaparsejs",
        "invenio_previewer.extensions.json_prismjs",
@@ -46,7 +47,8 @@ package:
    ]
 
    PREVIEWER_PREFERENCE = [
-       "geoserver",
+       "shapefile_geoserver",
+       "geotiff_geoserver",
        "gpx",
        "csv_papaparsejs",
        "json_prismjs",
