@@ -5,6 +5,7 @@
     <div id="map"
          data-base-url="{{ record.custom_fields[wms_url_field] }}"
          data-layer-name="{{ record.custom_fields[layer_name_field] }}"
+         data-bounds="{{ record.custom_fields[bounds_field] }}"
     ></div>
   {% else %}
     <p>Sorry, this file has no associated GeoServer layer.</p>

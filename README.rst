@@ -100,6 +100,7 @@ In ``invenio.cfg`` add the following namespace, custom fields and UI elements:
     PREVIEWER_GEOSPATIAL_CUSTOM_FIELDS_GEOSERVER_WMS_URL = "geoserver:wms_url"
     PREVIEWER_GEOSPATIAL_CUSTOM_FIELDS_GEOSERVER_WFS_URL = "geoserver:wfs_url"
     PREVIEWER_GEOSPATIAL_CUSTOM_FIELDS_GEOSERVER_LAYER_NAME = "geoserver:layer_name"
+    PREVIEWER_GEOSPATIAL_CUSTOM_FIELDS_GEOSERVER_BOUNDS = "geoserver:bounds"
 
     RDM_NAMESPACES = {
         "geoserver": "https://geoserver.org/"
@@ -109,6 +110,7 @@ In ``invenio.cfg`` add the following namespace, custom fields and UI elements:
         TextCF(name="geoserver:wms_url"),
         TextCF(name="geoserver:wfs_url"),
         TextCF(name="geoserver:layer_name"),
+        TextCF(name="geoserver:bounds"),
     ]
 
     RDM_CUSTOM_FIELDS_UI = [
@@ -145,6 +147,17 @@ In ``invenio.cfg`` add the following namespace, custom fields and UI elements:
                         placeholder="sdr:nyu_2451_12345",
                         icon="pencil",
                         description="Name of the GeoServer Layer this data can be found in",
+                        required=False
+                    )
+                ),
+                dict(
+                    field="geoserver:bounds",
+                    ui_widget="Input",
+                    props=dict(
+                        label="Bounds",
+                        placeholder="ENVELOPE(-178.2176, -66.969275, 71.406235818, 18.921781818)",
+                        icon="pencil",
+                        description="The envelope for the bounds of this layer",
                         required=False
                     )
                 )
