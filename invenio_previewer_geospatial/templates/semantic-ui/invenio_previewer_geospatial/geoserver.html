@@ -1,0 +1,12 @@
+{%- extends config.PREVIEWER_ABSTRACT_TEMPLATE %}
+
+{% block panel %}
+  {% if record.custom_fields[wms_url_field] and record.custom_fields[layer_name_field] %}
+    <div id="map"
+         data-base-url="{{ record.custom_fields[wms_url_field] }}"
+         data-layer-name="{{ record.custom_fields[layer_name_field] }}"
+    ></div>
+  {% else %}
+    <p>Sorry, this Shapefile has no associated GeoServer layer.</p>
+  {% endif %}
+{% endblock %}

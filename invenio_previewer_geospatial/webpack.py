@@ -11,6 +11,8 @@ theme = WebpackThemeBundle(
             entry={
                 "gpx_js": "./js/invenio_previewer_geospatial/gpx.js",
                 "gpx_css": "./css/invenio_previewer_geospatial/gpx.css",
+                "geoserver_js": "./js/invenio_previewer_geospatial/geoserver.js",
+                "geoserver_css": "./css/invenio_previewer_geospatial/geoserver.css",
             },
             dependencies={"leaflet": "^1.9.4", "leaflet-gpx": "^2.1.2"},
         ),
