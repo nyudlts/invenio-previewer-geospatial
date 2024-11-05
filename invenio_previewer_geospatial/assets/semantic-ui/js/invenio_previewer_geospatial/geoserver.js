@@ -5,8 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const mapElement = document.getElementById("map");
   const baseUrl = mapElement.getAttribute("data-base-url")
   const layerName = mapElement.getAttribute("data-layer-name")
+  const bounds = mapElement.getAttribute("data-bounds")
 
-  const map = L.map('map').setView([51.505, -0.09], 13);
+  const map = L.map('map').setView([0, 0], 13);
 
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -21,8 +22,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   wmsLayer.addTo(map);
   wmsLayer.setOpacity(0.75);
-  map.fitBounds([
-    [17.881242, -179.14734],
-    [71.390482, 179.778465]
-  ])
+
+  const regex = /ENVELOPE\(([-\d.]+), ([-\d.]+), ([-\d.]+), ([-\d.]+)\)/;
+  const match = bounds.match(regex);
+
+  if (match) {
+    const minLon = parseFloat(match[1]);
+    const maxLon = parseFloat(match[2]);
+    const minLat = parseFloat(match[3]);
+    const maxLat = parseFloat(match[4]);
+
+    const bounds = [[minLat, minLon], [maxLat, maxLon]];
+
+    map.fitBounds(bounds);
+  }
 });
