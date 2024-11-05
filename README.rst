@@ -29,6 +29,7 @@ package:
 ::
 
    PREVIEWER_PREVIEWERS_ORDER = [
+       "invenio_previewer.extensions.geoserver",
        "invenio_previewer.extensions.gpx",
        "invenio_previewer.extensions.csv_papaparsejs",
        "invenio_previewer.extensions.json_prismjs",
@@ -45,6 +46,7 @@ package:
    ]
 
    PREVIEWER_PREFERENCE = [
+       "geoserver",
        "gpx",
        "csv_papaparsejs",
        "json_prismjs",
@@ -59,13 +61,13 @@ package:
        "txt",
    ]
 
-Allow Images from Open Street Map
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Allow Images from Open Street Map & GeoServers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In ``invenio.cfg`` edit ``APP_DEFAULT_SECURE_HEADERS`` to allow images
 from OpenStreetMap:
 
-::
+.. code:: python
 
    APP_DEFAULT_SECURE_HEADERS = {
        'content_security_policy': {
@@ -78,11 +80,76 @@ from OpenStreetMap:
            'img-src': [
                "'self'",
                "https://*.openstreetmap.org",
+               "https://maps-public.geo.nyu.edu/geoserver/sdr/wms",
                'data:',
            ]
        },
        ...
    }
+
+Add Custom GeoServer Fields
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In ``invenio.cfg`` add the following namespace, custom fields and UI elements:
+
+.. code:: python
+
+    # Set these if you want to override the field names below
+    PREVIEWER_GEOSPATIAL_CUSTOM_FIELDS_GEOSERVER_WMS_URL = "geoserver:wms_url"
+    PREVIEWER_GEOSPATIAL_CUSTOM_FIELDS_GEOSERVER_WFS_URL = "geoserver:wfs_url"
+    PREVIEWER_GEOSPATIAL_CUSTOM_FIELDS_GEOSERVER_LAYER_NAME = "geoserver:layer_name"
+
+    RDM_NAMESPACES = {
+        "geoserver": "https://geoserver.org/"
+    }
+
+    RDM_CUSTOM_FIELDS = [
+        TextCF(name="geoserver:wms_url"),
+        TextCF(name="geoserver:wfs_url"),
+        TextCF(name="geoserver:layer_name"),
+    ]
+
+    RDM_CUSTOM_FIELDS_UI = [
+        {
+            "section": _("GeoServer"),
+            "fields": [
+                dict(
+                    field="geoserver:wms_url",
+                    ui_widget="Input",
+                    props=dict(
+                        label="WMS URL",
+                        placeholder="https://maps-public.geo.nyu.edu/geoserver/sdr/wms",
+                        icon="linkify",
+                        description="GeoServer WMS Service Base URL",
+                        required=False
+                    )
+                ),
+                dict(
+                    field="geoserver:wfs_url",
+                    ui_widget="Input",
+                    props=dict(
+                        label="WMS URL",
+                        placeholder="https://maps-public.geo.nyu.edu/geoserver/sdr/wfs",
+                        icon="linkify",
+                        description="GeoServer WFS Service Base URL",
+                        required=False
+                    )
+                ),
+                dict(
+                    field="geoserver:layer_name",
+                    ui_widget="Input",
+                    props=dict(
+                        label="Layer Name",
+                        placeholder="sdr:nyu_2451_12345",
+                        icon="pencil",
+                        description="Name of the GeoServer Layer this data can be found in",
+                        required=False
+                    )
+                )
+            ]
+        }
+    ]
+
 
 Development
 -----------

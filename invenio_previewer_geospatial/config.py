@@ -10,3 +10,7 @@
 
 PREVIEWER_GEOSPATIAL_BASE_TEMPLATE = "invenio_previewer_geospatial/base.html"
 """Default base template for the demo page."""
+
+PREVIEWER_GEOSPATIAL_CUSTOM_FIELDS_GEOSERVER_WMS_URL = "geoserver:wms_url"
+PREVIEWER_GEOSPATIAL_CUSTOM_FIELDS_GEOSERVER_WFS_URL = "geoserver:wfs_url"
+PREVIEWER_GEOSPATIAL_CUSTOM_FIELDS_GEOSERVER_LAYER_NAME = "geoserver:layer_name"
