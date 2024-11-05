@@ -1,4 +1,4 @@
-"""GeoServer Previewer."""
+"""GeoTIFF previews via GeoServer."""
 
 from flask import current_app, render_template
 from invenio_previewer.proxies import current_previewer
